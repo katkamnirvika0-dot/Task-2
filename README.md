@@ -1,102 +1,58 @@
-\# SocialBlog - Professional Social Media CRUD Application
-
-A modern, professional social media-style web application with complete CRUD operations and user authentication.
-
-
-
-\## Tools Used:
-
-XAMPP(Apache,MYSQL)
-
-PHP
-
-phpMyAdmin
-
-Notepad
-
-Github
-
-
-
-\## 🚀 Features
-
-\### 🔐 User Authentication
-
-Secure user registration with password hashing
-
-
-
-Login/logout with session management
-
-
-
-Profile management
-
-
-
-\### 📝 CRUD Operations
-
-Create: Share posts with rich content
-
-
-
-Read: View posts in modern social media feed
-
-
-
-Update: Edit your existing posts
-
-
-
-Delete: Remove your posts
-
-
-
-\### 🎨 Modern UI/UX
-
-Social media-inspired design (like Facebook/Twitter)
-
-
-
-Dark mode with gradient accents
-
-
-
-Responsive layout for all devices
-
-
-
-Interactive cards and animations
-
-
-
-Trending/suggestions sidebar
-
-
-
-\## Project Structure
-
-crud-blog/
-
-├── index.php          # Home page with social media feed
-
-├── register.php       # User registration
-
-├── login.php          # User login
-
-├── logout.php         # Logout script
-
-├── dashboard.php      # User dashboard
-
-├── create-post.php    # Create new post
-
-├── edit-post.php      # Edit existing post
-
-├── delete-post.php    # Delete post
-
-└── style.css         # Modern social media styling
-
-
-
-
-
+# Professional Blog System
+
+A clean, modern, and professional blog system built with PHP and MySQL.
+
+## Features
+
+### Core Features
+- 🔐 User Authentication (Login/Register)
+- 📝 Create, Read, Update, Delete Posts
+- 👤 User Dashboard
+- 🎨 Professional Light Theme
+
+### Advanced Features (Task 3)
+- 🔍 Search Functionality
+- 📄 Pagination System
+- 📱 Responsive Design
+- 🎯 Professional UI/UX
+
+## Technology Stack
+- **Frontend**: HTML5, CSS3 (Custom Professional Theme), JavaScript
+- **Backend**: PHP 7.4+
+- **Database**: MySQL
+- **Icons**: Bootstrap Icons
+- **Font**: Inter Font Family
+
+## Design Features
+- Clean, minimal design
+- Professional color scheme
+- Consistent spacing and typography
+- Smooth animations and transitions
+- Mobile-first responsive design
+- Accessible UI components
+
+## Installation
+
+1. **Setup Database**
+```sql
+CREATE DATABASE blog;
+USE blog;
+
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE posts (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    title VARCHAR(200) NOT NULL,
+    content TEXT NOT NULL,
+    published BOOLEAN DEFAULT TRUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
